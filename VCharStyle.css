@@ -1,0 +1,135 @@
+
+hr.title-card {
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	text-align: center;
+}
+hr.title-card:after {
+	content: 'Vampire: The Requiem';
+	display: inline-block;
+	position: relative;
+	padding: 0 10px;
+	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	color: #8c8b8b;
+	font-size: 30px;
+}
+
+hr.attributes-card {
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	text-align: center;
+}
+hr.attributes-card:after {
+	content: 'Attributes';
+	display: inline-block;
+	position: relative;
+	padding: 0 10px;
+	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	color: #8c8b8b;
+	font-size: 20px;
+}
+
+hr.skills-card {
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	text-align: center;
+}
+hr.skills-card:after {
+	content: 'Skills';
+	display: inline-block;
+	position: relative;
+	padding: 0 10px;
+	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	color: #8c8b8b;
+	font-size: 20px;
+}
+
+p.names-table {
+	display: table-row;
+}
+
+label.names-label {
+	display: table-cell;
+}
+
+.names-input {
+	display: table-cell;
+}
+
+section.names_and_such:after {
+	content: "";
+    display: table;
+    clear: both;
+}
+
+section.attributes-section:after {
+	content: "";
+    display: table;
+    clear: both;
+}
+
+div.leftmost-of-three {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
+
+div.center-of-three {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
+
+div.rightmost-of-three {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
+
+div.attributes-legend {
+	float: left;
+    width: 20%;
+}
+
+.dot-checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	outline: none;
+	border: 2px solid #999;
+}
+
+.dot-checkbox:checked {
+	border: solid black;
+	background-color: black;
+}
+
+div.attributes-mental {
+	float: left;
+    width: 25%;
+	display: table;
+	border-left: solid gray;
+}
+
+div.attributes-physical {
+	float: left;
+    width: 25%;
+	display: table;
+	border-left: solid gray;
+}
+
+div.attributes-social {
+	float: left;
+    width: 25%;
+	display: table;
+	border-left: solid gray;
+}
+
+div.skills-div {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
