@@ -42,3 +42,13 @@ function checkRelevantBoxes (event) {
 		}
 	}
 }
+
+function updateTitle() {
+	var curName = document.getElementsByName('character-name')[0].value;
+	if (curName) {
+		document.title = 'Vampire: The Requiem (' + curName + ')';
+	}
+	else {
+		document.title = 'Vampire: The Requiem';
+	}
+}
