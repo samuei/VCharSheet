@@ -9,7 +9,6 @@ hr.title-card:after {
 	display: inline-block;
 	position: relative;
 	padding: 0 10px;
-	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	color: #8c8b8b;
 	font-size: 30px;
 }
@@ -24,7 +23,6 @@ hr.attributes-card:after {
 	display: inline-block;
 	position: relative;
 	padding: 0 10px;
-	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	color: #8c8b8b;
 	font-size: 20px;
 }
@@ -33,15 +31,33 @@ hr.skills-card {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	text-align: center;
+	float: left;
+	width: 33.33%;
 }
 hr.skills-card:after {
 	content: 'Skills';
 	display: inline-block;
 	position: relative;
 	padding: 0 10px;
-	# box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	color: #8c8b8b;
 	font-size: 20px;
+}
+
+hr.other-traits-card {
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	text-align: center;
+	float: left;
+	width: 66.66%
+}
+hr.other-traits-card:after {
+	content: 'Other Traits';
+	display: inline-block;
+	position: relative;
+	padding: 0 10px;
+	color: #8c8b8b;
+	font-size: 20px;
+	clear: both;
 }
 
 p.names-table {
@@ -63,6 +79,12 @@ section.names_and_such:after {
 }
 
 section.attributes-section:after {
+	content: "";
+    display: table;
+    clear: both;
+}
+
+section.skills-traits-section:after {
 	content: "";
     display: table;
     clear: both;
@@ -132,4 +154,20 @@ div.skills-div {
 	float: left;
     width: 33.33%;
 	display: table;
+}
+
+div.left-other-traits-div {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
+
+div.right-other-traits-div {
+	float: left;
+    width: 33.33%;
+	display: table;
+}
+
+div.checkboxes {
+	display: table-row;
 }

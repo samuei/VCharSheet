@@ -33,16 +33,19 @@ function generateCheckboxes (element) {
 function checkRelevantBoxes (event) { 
 	var prefix = event.currentTarget.name.substr(0, event.currentTarget.name.length - 1), // e.g. computer_
 		position = event.currentTarget.name.substr(-1);
-	
+		
 	for (var i = 1; i <= numberOfCheckboxes; i++) { 
 		var underDotEl = document.getElementsByName(prefix + i)[0];
 		
 		if (underDotEl) { 
-			underDotEl.checked = i <= position;
+			if (i != position) { 
+				underDotEl.checked = i < position;
+			}
 		}
 	}
 }
 
+// Called when the character's name is changed
 function updateTitle() {
 	var curName = document.getElementsByName('character-name')[0].value;
 	if (curName) {
