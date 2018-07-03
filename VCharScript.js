@@ -3,21 +3,40 @@ window.addEventListener("load", function(event) {
 	
 	// Populate checkbox fields
 	var checkboxdivs = document.querySelectorAll("div.checkboxes");
-	for (var i = 0; i < checkboxdivs.length; i++) { // A nice foreach or for/of loop would be great, but Edge has no support for them. Yay.
+	for (var i = 0; i < checkboxdivs.length; i++) {
+		generateCheckboxLabels(checkboxdivs[i]);
+			
 		generateCheckboxes(checkboxdivs[i]);
+	}
+	
+	var inputcheckboxdivs = document.querySelectorAll("div.input-with-checkboxes");
+	for (var i = 0; i < inputcheckboxdivs.length; i++) {
+		generateCheckboxInputs(inputcheckboxdivs[i]);
+			
+		generateCheckboxes(inputcheckboxdivs[i]);
 	}
 });
 
-var numberOfCheckboxes = 5; // Magic number: change 5 -> x to have x checkboxes. Be wary of spacing.
+var numberOfCheckboxes = 5; // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
 
-function generateCheckboxes (element) {
+function generateCheckboxLabels (element) {
 	// Create label for checkboxes based off of id
 	var label = document.createElement('label')
 	label.htmlFor = element.id;
 	label.appendChild(document.createTextNode(element.id[0].toUpperCase() + element.id.slice(1)));
 	label.className = 'names-label';
 	element.appendChild(label);
+}
+
+function generateCheckboxInputs (element) {
+	// Create input to name checkboxes
+	var input = document.createElement('input');
+	input.setAttribute('type', 'text');
+	input.className = 'names-input';
+	element.appendChild(input);
+}
 	
+function generateCheckboxes (element) {
 	// Create actual checkboxes
 	for (var i = 1; i <= numberOfCheckboxes; i++) { 
 		var checkbox = document.createElement('input');
