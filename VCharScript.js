@@ -23,7 +23,13 @@ function generateCheckboxLabels (element) {
 	// Create label for checkboxes based off of id
 	var label = document.createElement('label')
 	label.htmlFor = element.id;
-	label.appendChild(document.createTextNode(element.id[0].toUpperCase() + element.id.slice(1)));
+	label.appendChild(
+		document.createTextNode(
+			element.id.replace(/\b\w/g, function(txt){
+				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			})
+		)
+	); // Capitalization
 	label.className = 'names-label';
 	element.appendChild(label);
 }
