@@ -203,11 +203,21 @@
 			<br>
 			<b>Vitae</b>
 			<br>
-			Vitae Per Turn:
+			<div class='vitae-checkboxes' id='vitae'></div>
+			<p class='names-table'>
+				<label for='vitae-per-turn-box' class='names-label'>Vitae Per Turn:     </label>
+				<input type='number' name='vitae-per-turn-box' class='names-input' min='1' max='100'>
+			</p>
 			
-			<br>
-			<b>Humanity</b>
-			<br>
+			<!---
+				I know this is supposed to be a series of lines to write in derangements, but that always struck me
+				as filler to take up the rest of the third column. Since that's not a concern here, I've condensed 
+				it into a simple numerical input.
+			--->
+			<p class='names-table'>
+				<label for='humanity-box'       class='names-label'>Humanity:           </label>
+				<input type='number' name='humanity-box' class='names-input' min='1' max='10' value='7'>
+			</p>
 		
 			<p class='names-table'>
 				<label for='size-box'       class='names-label'>Size:           </label>

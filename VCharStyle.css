@@ -129,6 +129,21 @@ div.attributes-legend {
 	background-color: black;
 }
 
+.black-box-checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 10px;
+	height: 10px;
+	outline: none;
+	border: 2px solid #999;
+}
+
+.black-box-checkbox:checked {
+	border: solid black;
+	background-color: black;
+}
+
 div.attributes-mental {
 	float: left;
     width: 25%;

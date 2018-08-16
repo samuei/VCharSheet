@@ -16,10 +16,16 @@ window.addEventListener("load", function(event) {
 			
 		generateCheckboxes(inputcheckboxdivs[i]);
 	}
+	
+	// Populate special case checkbox fields
+	var vitaecheckboxdiv = document.querySelector('div.vitae-checkboxes');
+	generateVitaeCheckboxes(vitaecheckboxdiv);
 });
 
 // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
 var numberOfCheckboxes = 5; 
+// Magic number: change to have x rows of vitae checkboxes. There will be 10 boxes per row. Default: 2
+var numberOfVitaeRows = 2;
 
 // Creates pretty labels for stats and skills based off of the id field
 function generateCheckboxLabels (element) {
@@ -60,13 +66,47 @@ function generateCheckboxes (element) {
 	}
 }
 
+// Creates two rows of checkboxes for the player's vitae tracker
+function generateVitaeCheckboxes (element) {
+	for (j = 0; j < numberOfVitaeRows; j++) { // Rows
+		for (var i = 1; i <= 10; i++) { // Individual checkboxes
+			var checkbox = document.createElement('input');
+			checkbox.type = "checkbox";
+			checkbox.name = element.id + '_' + (i + (j * 10));
+			checkbox.value = 'value';
+			checkbox.className = 'black-box-checkbox';
+			checkbox.onclick = checkRelevantVitaeBoxes;
+			element.appendChild(checkbox);
+		}
+		element.appendChild(document.createElement('br'));
+	}
+}
+
 // Called when a dot is changed. Fills or unfills the other dots in the series as necessary
 function checkRelevantBoxes (event) { 
-	var prefix = event.currentTarget.name.substr(0, event.currentTarget.name.length - 1), // e.g. computer_
-		position = event.currentTarget.name.substr(-1);
+	var eventName = event.currentTarget.name,
+		prefix = eventName.substr(0, eventName.indexOf("_")), // e.g. computer
+		position = eventName.substr(eventName.indexOf("_") + 1);
 		
 	for (var i = 1; i <= numberOfCheckboxes; i++) { 
-		var underDotEl = document.getElementsByName(prefix + i)[0];
+		var underDotEl = document.getElementsByName(prefix + '_' + i)[0];
+		
+		if (underDotEl) { 
+			if (i != position) { 
+				underDotEl.checked = i < position;
+			}
+		}
+	}
+}
+
+// Called when a vitae box is changed. Fills or unfills the other dots in the series as necessary
+function checkRelevantVitaeBoxes (event) { 
+	var eventName = event.currentTarget.name,
+		position = eventName.substr(eventName.indexOf("_") + 1),
+		numberOfVitaeBoxes = numberOfVitaeRows * 10;
+		
+	for (var i = 1; i <= numberOfVitaeBoxes; i++) { 
+		var underDotEl = document.getElementsByName('vitae_' + i)[0];
 		
 		if (underDotEl) { 
 			if (i != position) { 
