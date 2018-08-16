@@ -18,8 +18,12 @@ window.addEventListener("load", function(event) {
 	}
 	
 	// Populate special case checkbox fields
+	// Vitae
 	var vitaecheckboxdiv = document.querySelector('div.vitae-checkboxes');
 	generateVitaeCheckboxes(vitaecheckboxdiv);
+	// Blood Potency
+	var bpcheckboxdiv = document.querySelector('div.blood-potency-checkboxes');
+	generateBPCheckboxes(bpcheckboxdiv);
 });
 
 // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
@@ -82,6 +86,19 @@ function generateVitaeCheckboxes (element) {
 	}
 }
 
+// Creates the dots (really styled checkboxes) for the blood potency tracker
+function generateBPCheckboxes (element) {
+	for (var i = 1; i <= 10; i++) { // Magic number: The max BP is 10, always.
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = element.id + '_' + i;
+		checkbox.value = 'value';
+		checkbox.className = 'dot-checkbox';
+		checkbox.onclick = checkRelevantBPBoxes;
+		element.appendChild(checkbox);
+	}
+}
+
 // Called when a dot is changed. Fills or unfills the other dots in the series as necessary
 function checkRelevantBoxes (event) { 
 	var eventName = event.currentTarget.name,
@@ -107,6 +124,22 @@ function checkRelevantVitaeBoxes (event) {
 		
 	for (var i = 1; i <= numberOfVitaeBoxes; i++) { 
 		var underDotEl = document.getElementsByName('vitae_' + i)[0];
+		
+		if (underDotEl) { 
+			if (i != position) { 
+				underDotEl.checked = i < position;
+			}
+		}
+	}
+}
+
+// Called when a dot is changed. Fills or unfills the other dots in the series as necessary
+function checkRelevantBPBoxes (event) { 
+	var eventName = event.currentTarget.name,
+		position = eventName.substr(eventName.indexOf("_") + 1);
+		
+	for (var i = 1; i <= 10; i++) { 
+		var underDotEl = document.getElementsByName('blood potency_' + i)[0];
 		
 		if (underDotEl) { 
 			if (i != position) { 
