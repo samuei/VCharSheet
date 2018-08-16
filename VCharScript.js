@@ -9,6 +9,7 @@ window.addEventListener("load", function(event) {
 		generateCheckboxes(checkboxdivs[i]);
 	}
 	
+	// Populate unlabeled checkbox fields
 	var inputcheckboxdivs = document.querySelectorAll("div.input-with-checkboxes");
 	for (var i = 0; i < inputcheckboxdivs.length; i++) {
 		generateCheckboxInputs(inputcheckboxdivs[i]);
@@ -17,33 +18,37 @@ window.addEventListener("load", function(event) {
 	}
 });
 
-var numberOfCheckboxes = 5; // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
+// Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
+var numberOfCheckboxes = 5; 
 
+// Creates pretty labels for stats and skills based off of the id field
 function generateCheckboxLabels (element) {
-	// Create label for checkboxes based off of id
 	var label = document.createElement('label')
 	label.htmlFor = element.id;
+	
+	// Capitalization
 	label.appendChild(
 		document.createTextNode(
 			element.id.replace(/\b\w/g, function(txt){
 				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 			})
 		)
-	); // Capitalization
+	); 
+	
 	label.className = 'names-label';
 	element.appendChild(label);
 }
 
+// Creates text fields as labels for center-column values
 function generateCheckboxInputs (element) {
-	// Create input to name checkboxes
 	var input = document.createElement('input');
 	input.setAttribute('type', 'text');
 	input.className = 'names-input';
 	element.appendChild(input);
 }
-	
+
+// Creates the dots (really styled checkboxes) for a stat, skill, etc
 function generateCheckboxes (element) {
-	// Create actual checkboxes
 	for (var i = 1; i <= numberOfCheckboxes; i++) { 
 		var checkbox = document.createElement('input');
 		checkbox.type = "checkbox";
@@ -55,6 +60,7 @@ function generateCheckboxes (element) {
 	}
 }
 
+// Called when a dot is changed. Fills or unfills the other dots in the series as necessary
 function checkRelevantBoxes (event) { 
 	var prefix = event.currentTarget.name.substr(0, event.currentTarget.name.length - 1), // e.g. computer_
 		position = event.currentTarget.name.substr(-1);
