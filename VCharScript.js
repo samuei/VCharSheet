@@ -24,6 +24,9 @@ window.addEventListener("load", function(event) {
 	// Blood Potency
 	var bpcheckboxdiv = document.querySelector('div.blood-potency-checkboxes');
 	generateBPCheckboxes(bpcheckboxdiv);
+	// Willpower
+	var willpowercheckboxdiv = document.querySelector('div.willpower-checkboxes');
+	generateWillpowerCheckboxes(willpowercheckboxdiv);
 });
 
 // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
@@ -99,6 +102,30 @@ function generateBPCheckboxes (element) {
 	}
 }
 
+function generateWillpowerCheckboxes (element) {
+	// Dots
+	for (var i = 1; i <= 10; i++) { // Magic number: The max willpower is 10, always.
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = element.id + '-dots_' + i;
+		checkbox.value = 'value';
+		checkbox.className = 'dot-checkbox';
+		checkbox.onclick = checkRelevantWillpowerBoxes;
+		element.appendChild(checkbox);
+	}
+	element.appendChild(document.createElement('br'));
+	// Boxes
+	for (var i = 1; i <= 10; i++) { // Magic number: The max willpower is 10, always.
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = element.id + '-boxes_' + i;
+		checkbox.value = 'value';
+		checkbox.className = 'black-box-checkbox';
+		checkbox.onclick = checkRelevantWillpowerBoxes;
+		element.appendChild(checkbox);
+	}
+}
+
 // Called when a dot is changed. Fills or unfills the other dots in the series as necessary
 function checkRelevantBoxes (event) { 
 	var eventName = event.currentTarget.name,
@@ -133,13 +160,30 @@ function checkRelevantVitaeBoxes (event) {
 	}
 }
 
-// Called when a dot is changed. Fills or unfills the other dots in the series as necessary
+// Called when a blood potency dot is changed. Fills or unfills the other dots in the series as necessary
 function checkRelevantBPBoxes (event) { 
 	var eventName = event.currentTarget.name,
 		position = eventName.substr(eventName.indexOf("_") + 1);
 		
 	for (var i = 1; i <= 10; i++) { 
 		var underDotEl = document.getElementsByName('blood potency_' + i)[0];
+		
+		if (underDotEl) { 
+			if (i != position) { 
+				underDotEl.checked = i < position;
+			}
+		}
+	}
+}
+
+// Called when a willpower dot or box is changed. Fills or unfills the other dots in the series as necessary
+function checkRelevantWillpowerBoxes (event) { 
+	var eventName = event.currentTarget.name,
+		prefix = eventName.substr(0, eventName.indexOf("_")),
+		position = eventName.substr(eventName.indexOf("_") + 1);
+		
+	for (var i = 1; i <= 10; i++) { 
+		var underDotEl = document.getElementsByName(prefix + '_' + i)[0];
 		
 		if (underDotEl) { 
 			if (i != position) { 
