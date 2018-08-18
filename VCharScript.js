@@ -18,15 +18,15 @@ window.addEventListener("load", function(event) {
 	}
 	
 	// Populate special case checkbox fields
-	// Vitae
-	var vitaecheckboxdiv = document.querySelector('div.vitae-checkboxes');
-	generateVitaeCheckboxes(vitaecheckboxdiv);
-	// Blood Potency
-	var bpcheckboxdiv = document.querySelector('div.blood-potency-checkboxes');
-	generateBPCheckboxes(bpcheckboxdiv);
 	// Willpower
 	var willpowercheckboxdiv = document.querySelector('div.willpower-checkboxes');
 	generateWillpowerCheckboxes(willpowercheckboxdiv);
+	// Blood Potency
+	var bpcheckboxdiv = document.querySelector('div.blood-potency-checkboxes');
+	generateBPCheckboxes(bpcheckboxdiv);
+	// Vitae
+	var vitaecheckboxdiv = document.querySelector('div.vitae-checkboxes');
+	generateVitaeCheckboxes(vitaecheckboxdiv);
 });
 
 // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
