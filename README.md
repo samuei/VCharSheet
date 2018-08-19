@@ -1,4 +1,4 @@
-# [VCharsheet](https://samuei.github.io/VCharsheet/)
+# [VCharSheet](https://samuei.github.io/VCharSheet/)
 
 A virtual character sheet for White Wolf's Vampire: The Requiem, 1st edition.
 
