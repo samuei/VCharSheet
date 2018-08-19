@@ -136,12 +136,74 @@ div.attributes-legend {
 	width: 10px;
 	height: 10px;
 	outline: none;
-	border: 2px solid #999;
+	border: 1px solid #999;
 }
 
 .black-box-checkbox:checked {
 	border: solid black;
 	background-color: black;
+}
+
+.health-checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 10px;
+	height: 10px;
+	outline: none;
+	border: 1px solid #999;
+}
+
+.health-empty-checkbox {
+	background: none;
+}
+
+.health-bashing-checkbox {
+	background: 
+		linear-gradient(to top left,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%);
+}
+
+.health-lethal-checkbox {   
+	background: 
+		linear-gradient(to top left,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%),
+		linear-gradient(to top right,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%);
+}
+
+.health-aggravated-checkbox {
+	background: 
+		linear-gradient(to top left,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%),
+		linear-gradient(to top right,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%),
+		linear-gradient(to right,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) calc(50% - 0.8px),
+			rgba(0,0,0,1) 50%,
+			rgba(0,0,0,0) calc(50% + 0.8px),
+			rgba(0,0,0,0) 100%);
 }
 
 div.attributes-mental {

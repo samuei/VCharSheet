@@ -18,6 +18,9 @@ window.addEventListener("load", function(event) {
 	}
 	
 	// Populate special case checkbox fields
+	// Health
+	var healthcheckboxdiv = document.querySelector('div.health-checkboxes');
+	generateHealthCheckboxes(healthcheckboxdiv);
 	// Willpower
 	var willpowercheckboxdiv = document.querySelector('div.willpower-checkboxes');
 	generateWillpowerCheckboxes(willpowercheckboxdiv);
@@ -30,7 +33,9 @@ window.addEventListener("load", function(event) {
 });
 
 // Magic number: change to have x checkboxes. Be wary of spacing. Default: 5
-var numberOfCheckboxes = 5; 
+var numberOfCheckboxes = 5;
+// Magic number: change to have x rows on the health tracker. There will be 12 boxes per row. Default: 1
+var numberofHealthRows = 1;
 // Magic number: change to have x rows of vitae checkboxes. There will be 10 boxes per row. Default: 2
 var numberOfVitaeRows = 2;
 
@@ -102,6 +107,7 @@ function generateBPCheckboxes (element) {
 	}
 }
 
+// Creates the dots and checkboxes for the Willpower tracker
 function generateWillpowerCheckboxes (element) {
 	// Dots
 	for (var i = 1; i <= 10; i++) { // Magic number: The max willpower is 10, always.
@@ -123,6 +129,37 @@ function generateWillpowerCheckboxes (element) {
 		checkbox.className = 'black-box-checkbox';
 		checkbox.onclick = checkRelevantWillpowerBoxes;
 		element.appendChild(checkbox);
+	}
+}
+
+// Creates the dots and checkboxes for the Health tracker
+function generateHealthCheckboxes (element) {
+	for (var j = 0; j < numberofHealthRows; j++) {
+		// Dots
+		for (var i = 1; i <= 12; i++) { // Magic number: There are 12 boxes per row, per the official sheet
+			var checkbox = document.createElement('input');
+			checkbox.type = "checkbox";
+			checkbox.name = element.id + '-dots_' + (i + (j * 12));
+			checkbox.value = 'value';
+			checkbox.className = 'dot-checkbox';
+			checkbox.onclick = checkRelevantHealthDots;
+			element.appendChild(checkbox);
+		}
+		element.appendChild(document.createElement('br'));
+		// Boxes
+		for (var i = 1; i <= 12; i++) { // Magic number: There are 12 boxes per row, per the official sheet
+			var checkbox = document.createElement('input');
+			checkbox.type = "checkbox";
+			checkbox.name = element.id + '-boxes_' + (i + (j * 12));
+			checkbox.value = 'value';
+			checkbox.className = 'health-checkbox health-empty-checkbox'; // initialize to no damage
+			checkbox.onclick = rotateHealthBoxLevel;
+			element.appendChild(checkbox);
+		}
+		if (j != numberofHealthRows - 1) { // Spaceing makes it look prettier
+			element.appendChild(document.createElement('br'));
+			element.appendChild(document.createElement('br'));
+		}
 	}
 }
 
@@ -190,6 +227,49 @@ function checkRelevantWillpowerBoxes (event) {
 				underDotEl.checked = i < position;
 			}
 		}
+	}
+}
+
+// Called when a health dot is changed. Fills or unfills the other dots in the series as necessary
+function checkRelevantHealthDots (event) { 
+	var eventName = event.currentTarget.name,
+		prefix = eventName.substr(0, eventName.indexOf("_")),
+		position = eventName.substr(eventName.indexOf("_") + 1);
+		
+	for (var i = 1; i <= (numberofHealthRows * 12); i++) { 
+		var underDotEl = document.getElementsByName(prefix + '_' + i)[0];
+		
+		if (underDotEl) { 
+			if (i != position) { 
+				underDotEl.checked = i < position;
+			}
+		}
+	}
+}
+
+// Called when a health box is changed. Changes the box's display, but leaves the other boxes alone
+function rotateHealthBoxLevel (event) { 
+	var thisBox = document.getElementsByName(event.currentTarget.name)[0],
+		oldClassName = event.currentTarget.className,
+		newClassName = 'health-empty-checkbox'; // Default to empty
+	
+	// Removes the current condition and adds the next level
+	// Assumes it will only have one at a time.
+	if (thisBox.classList.contains('health-empty-checkbox')) {
+		thisBox.classList.remove('health-empty-checkbox');
+		thisBox.classList.add('health-bashing-checkbox');
+	}
+	else if (thisBox.classList.contains('health-bashing-checkbox')) {
+		thisBox.classList.remove('health-bashing-checkbox');
+		thisBox.classList.add('health-lethal-checkbox');
+	}
+	else if (thisBox.classList.contains('health-lethal-checkbox')) {
+		thisBox.classList.remove('health-lethal-checkbox');
+		thisBox.classList.add('health-aggravated-checkbox');
+	}
+	else if (thisBox.classList.contains('health-aggravated-checkbox')) {
+		thisBox.classList.remove('health-aggravated-checkbox');
+		thisBox.classList.add('health-empty-checkbox');
 	}
 }
 
