@@ -1,10 +1,10 @@
 
-hr.title-card {
+.title-card {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	text-align: center;
 }
-hr.title-card:after {
+.title-card:after {
 	content: 'Vampire: The Requiem';
 	display: inline-block;
 	position: relative;
@@ -13,12 +13,13 @@ hr.title-card:after {
 	font-size: 30px;
 }
 
-hr.attributes-card {
+.attributes-card {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	text-align: center;
+	width: 100%
 }
-hr.attributes-card:after {
+.attributes-card:after {
 	content: 'Attributes';
 	display: inline-block;
 	position: relative;
@@ -27,14 +28,14 @@ hr.attributes-card:after {
 	font-size: 20px;
 }
 
-hr.skills-card {
+.skills-card {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	text-align: center;
-	float: left;
 	width: 33.33%;
+	display: inline-block;
 }
-hr.skills-card:after {
+.skills-card:after {
 	content: 'Skills';
 	display: inline-block;
 	position: relative;
@@ -43,74 +44,69 @@ hr.skills-card:after {
 	font-size: 20px;
 }
 
-hr.other-traits-card {
+.other-traits-card {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	text-align: center;
-	float: left;
-	width: 66.66%
+	width: 66%;
+	display: inline-block;
 }
-hr.other-traits-card:after {
+.other-traits-card:after {
 	content: 'Other Traits';
 	display: inline-block;
 	position: relative;
 	padding: 0 10px;
 	color: #8c8b8b;
 	font-size: 20px;
-	clear: both;
 }
 
-p.names-table {
-	display: table-row;
+.names-table {
+	margin: 5px 0;
+	display: flex;
 }
 
-label.names-label {
-	display: table-cell;
+.names-label {
+	width: 40%;
+	min-width: -moz-min-content;
+	min-width: -webkit-min-content;
+	min-width: min-content;
 }
 
 .names-input {
-	display: table-cell;
+	width: 40%;
 }
 
-section.names_and_such:after {
-	content: "";
-    display: table;
-    clear: both;
+.names_and_such {
+	display: flex;
 }
 
-section.attributes-section:after {
-	content: "";
-    display: table;
-    clear: both;
+.attributes-section {
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-section.skills-traits-section:after {
-	content: "";
-    display: table;
-    clear: both;
+.skills-traits-section {
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-div.leftmost-of-three {
-	float: left;
+.leftmost-of-three {
     width: 33.33%;
-	display: table;
 }
 
-div.center-of-three {
-	float: left;
+.center-of-three {
     width: 33.33%;
-	display: table;
 }
 
-div.rightmost-of-three {
-	float: left;
+.rightmost-of-three {
     width: 33.33%;
-	display: table;
 }
 
-div.attributes-legend {
-	float: left;
-    width: 20%;
+.attributes-legend {
+    width: 10%;
+	min-width: 6em;
 }
 
 .dot-checkbox {
@@ -122,6 +118,7 @@ div.attributes-legend {
 	height: 10px;
 	outline: none;
 	border: 2px solid #999;
+	margin: 3px 1px;
 }
 
 .dot-checkbox:checked {
@@ -137,6 +134,7 @@ div.attributes-legend {
 	height: 10px;
 	outline: none;
 	border: 1px solid #999;
+	margin: 3px 1px;
 }
 
 .black-box-checkbox:checked {
@@ -152,6 +150,7 @@ div.attributes-legend {
 	height: 10px;
 	outline: none;
 	border: 1px solid #999;
+	margin: 3px 1px;
 }
 
 .health-empty-checkbox {
@@ -206,49 +205,40 @@ div.attributes-legend {
 			rgba(0,0,0,0) 100%);
 }
 
-div.attributes-mental {
-	float: left;
+.attributes-mental {
     width: 25%;
-	display: table;
 	border-left: solid gray;
+	padding-left: 1%;
 }
 
-div.attributes-physical {
-	float: left;
+.attributes-physical {
     width: 25%;
-	display: table;
 	border-left: solid gray;
+	padding-left: 1%;
 }
 
-div.attributes-social {
-	float: left;
+.attributes-social {
     width: 25%;
-	display: table;
 	border-left: solid gray;
+	padding-left: 1%;
 }
 
-div.skills-div {
-	float: left;
-    width: 33.33%;
-	display: table;
+.skills-div {
+    width: 33%;
 }
 
-div.left-other-traits-div {
-	float: left;
-    width: 33.33%;
-	display: table;
+.left-other-traits-div {
+    width: 33%;
 }
 
-div.right-other-traits-div {
-	float: left;
-    width: 33.33%;
-	display: table;
+.right-other-traits-div {
+    width: 33%;
 }
 
-div.checkboxes {
-	display: table-row;
+.checkboxes {
+	display: flex;
 }
 
 div.input-with-checkboxes {
-	display: table-row;
+	
 }
